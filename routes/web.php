@@ -10,11 +10,11 @@
 |
 */
 
-$router->get('/', function () use ($router) {
-    return $router->app->version();
-});
-
 Route::post('login', 'AuthController@login');
 Route::get('check-token-is-active', 'AuthController@checkTokenIsActive');
+
+Route::group(['middleware' => 'auth:api'], function(){
+
+});
 
 
