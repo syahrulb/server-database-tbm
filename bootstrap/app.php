@@ -26,7 +26,6 @@ $app = new \Dusterio\LumenPassport\Lumen7Application(
     dirname(__DIR__)
 );
 
-$app->configure('auth');
 $app->withFacades();
 
 $app->withEloquent();
@@ -64,6 +63,8 @@ $app->singleton(
 */
 
 $app->configure('app');
+$app->configure('auth');
+
 
 /*
 |--------------------------------------------------------------------------
@@ -101,6 +102,7 @@ $app->register(App\Providers\EventServiceProvider::class);
 
 $app->register(Laravel\Passport\PassportServiceProvider::class);
 $app->register(Dusterio\LumenPassport\PassportServiceProvider::class);
+\Dusterio\LumenPassport\LumenPassport::routes($app, ['prefix' => 'api']);
 
 /*
 |--------------------------------------------------------------------------
